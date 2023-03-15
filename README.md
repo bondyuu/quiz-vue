@@ -25,5 +25,11 @@ npm run lint
 npm install vue-router
 ```
 
+### Vuex & Vuex-persistedstate Install
+```
+npm install vuex --save
+npm install vuex-persistedstate --save
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
