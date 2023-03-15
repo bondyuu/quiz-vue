@@ -7,7 +7,24 @@ export default createStore({
         createPersistedState()
     ],
     state : {
-        counter : 2,
+        id : 0,
+        numbers:[
+            'home', 'first', 'second'
+        ],
+        questions: {
+            home: {
+                question: "What's your name?",
+                answer: '신하현'
+            },
+            first: {
+                question: "How old are you?",
+                answer: 32
+            },
+            second: {
+                questions: "a?",
+                answer: 'a'
+            }
+        }
     },
     getters : {
         getTwoPowerCounter(state){
@@ -15,13 +32,13 @@ export default createStore({
         },
     },
     mutations : {
-        setCounter(state, value){
-            state.counter = value;
+        setId(state, value){
+            state.id = value;
         },
     },
     actions: {
-        setAccessToken: ({commit}, token) => {
-            commit('setAccessToken', token);
+        setId: ({commit}, value) => {
+            commit('setId', value);
         },
     }
 });
