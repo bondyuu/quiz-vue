@@ -31,5 +31,10 @@ npm install vuex --save
 npm install vuex-persistedstate --save
 ```
 
+### Bootstrap Install
+```
+npm install bootstrap-vue-3
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
