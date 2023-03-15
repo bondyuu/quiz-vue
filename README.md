@@ -20,5 +20,10 @@ npm run build
 npm run lint
 ```
 
+### Vue Router Install
+```
+npm install vue-router
+```
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
