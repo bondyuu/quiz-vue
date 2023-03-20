@@ -10,8 +10,13 @@
     </div>
   </div>
 
-  <div class="progress-wrapper">
-    <b-progress :value="bar" variant="info"></b-progress>
+  <div class="container">
+    <div class="progress">
+      <div class="percent"></div>
+    </div>
+    <div class="steps">
+      <div v-for="(q, index) in questions" :class="index===0 ? 'step selected' : 'step'" :id="index" :key="index"></div>
+    </div>
   </div>
   <div class="wrapper">
     <h3 v-for="(q, index) in questions[idx].question" :key="index">{{ q }}</h3>
@@ -58,7 +63,7 @@ export default {
           help: 'ㅂㄷㄲㄷ',
           msg: ['날 잊지 않았구나 ㅠ^ㅠ', '얼른 와~'],
           err: ['내가 분명 말했는데 ㅡㅡ^', '대충 읽었구나;;']
-        }
+        },
       ],
       bar: 0
     }
@@ -82,6 +87,11 @@ export default {
         if (this.ans === this.questions[this.idx].answer) {
           swal(this.questions[this.idx].msg[0], this.questions[this.idx].msg[1],"success");
           this.bar += 100 / this.questions.length;
+          let p = 100 / (this.questions.length - (this.idx+1));
+          console.log(p);
+          document.getElementsByClassName('percent')[0].style.width = `${p}%`;
+          document.getElementById(this.idx).classList.add('completed');
+          document.getElementById(this.idx+1).classList.add('selected');
           this.idx += 1;
           this.ans = '';
           this.openAnswer = false;
@@ -156,5 +166,51 @@ export default {
   font-weight: bold;
   transform: scale(1.1);
   transition: all 0.5s;
+}
+.container {
+  position: absolute;
+
+}
+.steps {
+  top: -100px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin-left: 10%;
+}
+.step {
+  width: 25px;
+  height: 25px;
+  background: #fff;
+  border: 3px solid #ACACA6;
+  border-radius: 50%;
+  transition: background 1s;
+}
+.step.selected {
+  border: 3px solid #4B81BD;
+}
+.step.completed {
+  border: 3px solid #4B81BD;
+  background: #4B81BD;
+}
+.progress {
+  top: -100px;
+  position: absolute;
+  margin-top: 9px;
+  margin-left: 11%;
+  width: 72%;
+  height: 25%;
+  /*border-bottom: 2px solid #ACACA6;*/
+  z-index: -1;
+}
+.percent {
+  margin-top: 1px;
+  position: absolute;
+  width: 0;
+  height: 100%;
+  border-bottom: 5px solid #4B81BD;
+  z-index: 1;
+  transition: width 1s;
 }
 </style>
