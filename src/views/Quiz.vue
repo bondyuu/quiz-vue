@@ -20,11 +20,9 @@
   </div>
   <div class="wrapper">
     <h3 v-for="(q, index) in questions[idx].question" :key="index">{{ q }}</h3>
-    <b-form-input v-model="ans" placeholder="Answer" ></b-form-input>
-    <b-button pill variant="outline-secondary" @click="check">확인</b-button>
-  </div>
-  <div class="footer">
+    <b-form-input v-model="ans" placeholder="Answer" ref="cursor"></b-form-input>
     <BIconQuestionCircle class="icon-q" @click="handleToggle"/>
+    <b-button pill variant="outline-secondary" @click="check" style="margin-left: 25px">확인</b-button>
   </div>
 </template>
 
@@ -36,6 +34,9 @@ export default {
   components: {
     BIconQuestionCircle,
   },
+  // mounted() {
+  //   this.startCursor();
+  // },
   data() {
     return {
       isShow: false,
@@ -69,6 +70,9 @@ export default {
     }
   },
   methods: {
+    // startCursor() {
+    //   this.$refs.cursor.focus();
+    // },
     showAnswer() {
       this.openAnswer = !this.openAnswer;
     },
@@ -118,19 +122,16 @@ export default {
   width: 70%;
 }
 .wrapper {
-  width: 50%;
-  margin-left: 25%;
-  margin-top: 50%;
+  width: 60%;
+  margin-left: 20%;
+  /*margin-top: 50%;*/
 }
 .form-control {
   margin-top: 30px;
   margin-bottom: 20px;
 }
-.footer {
-  margin-top: 65%;
-  width: 80%;
-}
 .icon-q {
+  top: 100px;
   width: 2em;
   height: 2em;
   float: right;
@@ -139,6 +140,7 @@ export default {
   width: 100%; height:100%;
   background: rgba(0,0,0,0.5);
   position: fixed; padding: 20px;
+  z-index: 2;
 }
 .white-bg {
   margin-top: 100px;
@@ -168,11 +170,13 @@ export default {
   transition: all 0.5s;
 }
 .container {
-  position: absolute;
+  /*position: absolute;*/
+  margin-bottom: 30%;
+  padding-top: 20%;
 
 }
 .steps {
-  top: -100px;
+  /*top: -100px;*/
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -195,12 +199,12 @@ export default {
   background: #4B81BD;
 }
 .progress {
-  top: -100px;
+  /*top: -100px;*/
   position: absolute;
   margin-top: 9px;
   margin-left: 11%;
   width: 72%;
-  height: 25%;
+  height: 6px;
   /*border-bottom: 2px solid #ACACA6;*/
   z-index: -1;
 }
