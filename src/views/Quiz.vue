@@ -104,7 +104,7 @@ export default {
         }
       } else {
         if (this.ans === this.questions[this.idx].answer) {
-          swal(this.questions[this.idx].msg[0], this.questions[this.idx].msg[1],"success");
+          // swal(this.questions[this.idx].msg[0], this.questions[this.idx].msg[1],"success");
           this.$router.push("/end");
         } else {
           swal(this.questions[this.idx].err[0], this.questions[this.idx].err[1],"error");
