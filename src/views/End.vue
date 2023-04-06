@@ -1,5 +1,25 @@
 <template>
-  <h1>축하행~</h1>
+  <div>
+    <h1>
+      <VueWriter :array="['축하해! 모든 단어를 찾았구나']" :iterations="1" :type-speed="150"/>
+      <VueWriter :array="['네가 수집한 단어를 조합해볼까?']" :iterations="1" :start="2600" :type-speed="150"/>
+      <VueWriter :array="['송']" :iterations="1" :start="5400" :type-speed="150"/>
+      <VueWriter :array="['파대']" :iterations="1" :start="5800" :type-speed="200"/>
+      <VueWriter :array="['로']" :iterations="1" :start="6600" :type-speed="200"/>
+      <VueWriter :array="['37길']" :iterations="1" :start="7000" :type-speed="200"/>
+      <VueWriter :array="['88']" :iterations="1" :start="8200" :type-speed="200"/>
+      <VueWriter :array="['4층']" :iterations="1" :start="9000" :type-speed="200"/>
+    </h1>
+    <h1 v-if="isShow" style="font-weight: bold;color: red">송파대로 37길 88, 4층!</h1>
+    <h1>
+      <VueWriter :array="['여기가 바로 다음 단계로 가는 길이야']" :iterations="1" :start="11000" :type-speed="150"/>
+      <VueWriter :array="['비용 걱정은 말고 ★택시★를 타고']" :iterations="1" :start="14000" :type-speed="150"/>
+      <VueWriter :array="['어서 나를 만나러 와줘']" :iterations="1" :start="16800" :type-speed="150" style="margin-bottom: 20px;"/>
+      <VueWriter :array="['비상상황이 생기면']" :iterations="1" :start="19000" :type-speed="150"/>
+      <VueWriter :array="['이 링크를 준 번호로 문자해보라구']" :iterations="1" :start="21000" :type-speed="150" style="margin-bottom: 20px;"/>
+      <VueWriter :array="['얼른 만나 ~']" :iterations="1" :start="23800" :type-speed="150"/>
+    </h1>
+  </div>
 </template>
 
 <script>
@@ -41,19 +61,22 @@ export default {
         }
       }
       requestAnimationFrame(this.render);
+    },
+    show() {
+      this.isShow = true;
     }
-
   },
   data() {
     return{
       particles: [],
-      colors: ["#eb6383","#fa9191","#ffe9c5","#b4f2e1"]
+      colors: ["#eb6383","#fa9191","#ffe9c5","#b4f2e1"],
+      isShow: false
     }
   },
   mounted() {
     this.pop();
     window.setTimeout(this.render, 700);
-    // window.addEventListener('click', this.pop);
+    window.setTimeout(this.show, 9700);
   },
 }
 </script>
